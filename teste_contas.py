@@ -13,13 +13,13 @@ conta2 = Conta("Maria", 2, 0)
 conta3 = Conta("Pedro", 3, 0)
 
 # Realizando operações de teste
-conta1.depositar(1000)
-conta1.sacar(500)
+conta1.depositar(150000)
+conta1.sacar(eval("30,5")) # Indução ao tratamento de exceções
 conta1.depositar(2000)
-conta1.transferir(conta2, 1900)
+conta1.transferir(conta2, 75000)
 conta1.depositar(15000)
 conta1.transferir(conta2, 4300)
-conta1.sacar(5000)
+conta1.sacar("5000") # Indução ao tratamento de exceções
 conta1.transferir(conta3, 5000)
 conta2.sacar(3500)
 conta3.depositar(18000)
@@ -41,6 +41,8 @@ def imprime_extrato(x, y):
 
 
 # Gerando o extrato das transações
+imprime_extrato(conta1, 1)
+
 imprime_extrato(conta2, 2)
 
 Conta.contador_instancias()
