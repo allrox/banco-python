@@ -3,11 +3,15 @@ from extratos import Extrato
 
 
 class Conta:
+
+    contador_contas = 0
+    lista_contas = []
+
     def __init__(self, clientes, numero, saldo):
         """
         Inicializa uma nova instância de Conta.
         :param clientes: Lista de clientes associados à conta.
-        :type clientes: list
+        :type clientes: str
         :param numero: Número da conta.
         :type numero: int
         :param saldo: Saldo inicial da conta.
@@ -18,6 +22,8 @@ class Conta:
         self.__saldo = saldo
         self.data_abertura = datetime.datetime.today()
         self.extrato = Extrato()
+        Conta.lista_contas.append(self)
+        Conta.contador_contas += 1
 
     def depositar(self, valor):
         """
@@ -47,7 +53,6 @@ class Conta:
             # Utiliza '.append' para incluir a operação na array TRANSACOES
             self.extrato.transacoes.append(["SAQUE", valor, "Data", datetime.datetime.today()])
             return f"Saque de {valor} realizado."
-
 
     def transferir(self, conta_destino, valor):
         """

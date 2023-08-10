@@ -18,19 +18,20 @@ conta1.sacar(500)
 conta1.depositar(2000)
 conta1.transferir(conta2, 1900)
 conta1.depositar(15000)
-conta1.transferir(conta2,4300)
+conta1.transferir(conta2, 4300)
 conta1.sacar(5000)
 conta1.transferir(conta3, 5000)
 conta2.sacar(3500)
 conta3.depositar(18000)
-conta3.transferir(conta2,8000)
+conta3.transferir(conta2, 8000)
+
 
 # Função para exibir a geração do extrato com o saldo
 def imprime_extrato(x, y):
     """
     Imprime o extrato para a conta e número informados no input
     :param x: Conta desejada
-    :type x: str
+    :type x: extrato
     :param y: Número da conta desejada
     :type y: int
     :return: str
@@ -38,5 +39,8 @@ def imprime_extrato(x, y):
     x.extrato.gerar_extrato(y)
     x.ver_saldo()
 
+
 # Gerando o extrato das transações
 imprime_extrato(conta2, 2)
+
+print(f"\nO objeto Conta possui \033[31m{Conta.contador_contas} instâncias.\033[m")

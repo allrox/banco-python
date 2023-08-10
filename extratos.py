@@ -7,7 +7,7 @@ class Extrato:
         Gera um extrato de movimentações na conta.
         :param numeroconta: Número da conta de origem do extrato.
         :return: Lista com tipo de ocorrência com valor, data e hora.
-        :rtype: str
+        :rtype: list
         """
         # Linha de cabeçalho
         print(f"\nExtrato da Conta Nº {numeroconta} "
