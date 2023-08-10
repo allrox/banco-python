@@ -26,9 +26,17 @@ conta3.depositar(18000)
 conta3.transferir(conta2,8000)
 
 # Função para exibir a geração do extrato com o saldo
-def imprime_extrato(conta, num):
-    conta.extrato.gerar_extrato(num)
-    conta.ver_saldo()
+def imprime_extrato(x, y):
+    """
+    Imprime o extrato para a conta e número informados no input
+    :param x: Conta desejada
+    :type x: str
+    :param y: Número da conta desejada
+    :type y: int
+    :return: str
+    """
+    x.extrato.gerar_extrato(y)
+    x.ver_saldo()
 
 # Gerando o extrato das transações
-imprime_extrato(conta1, 1)
+imprime_extrato(conta2, 2)
