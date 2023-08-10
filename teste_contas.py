@@ -43,4 +43,4 @@ def imprime_extrato(x, y):
 # Gerando o extrato das transações
 imprime_extrato(conta2, 2)
 
-print(f"\nO objeto Conta possui \033[31m{Conta.contador_contas} instâncias.\033[m")
+Conta.contador_instancias()

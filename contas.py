@@ -25,6 +25,37 @@ class Conta:
         Conta.lista_contas.append(self)
         Conta.contador_contas += 1
 
+
+    def decoration(metodo):
+        """
+        Função decoradora, construída para modificar ou estender o comportamentode outras
+        funções ou métodos. Neste caso, recebe um método e imprime linhas pontilhadas antes e depois
+        do seu retorno.
+        :param metodo: Método a ser decorado
+        :return: str
+        """
+
+        # *args e **kwargs são mecanismos que preparam a função para receber um número
+        # variável de argumentos de qualquer tipo da função que está sendo decorada.
+        #
+        # O asterisco passa uma lista de argumentos posicionais variáveis para uma função,
+        # desempacota os argumentos passados e os torna acessíveis como uma tupla dentro da função.
+        #
+        # O asterisco duplo desempacota os argumentos nomeados passados e os torna acessíveis
+        # como um dicionário dentro da função
+        def wrapper(self, *args, **kwargs):
+            print(f"\n---------------------------------------------------------------")
+            resultado = metodo(self, *args, **kwargs)
+            print(f"---------------------------------------------------------------")
+            return resultado
+        return wrapper
+
+
+    @staticmethod
+    def contador_instancias():
+        print(f"\n\033[31mO objeto Conta possui {Conta.contador_contas} instâncias.\033[m")
+
+
     def depositar(self, valor):
         """
         Deposita um valor na conta.
@@ -73,9 +104,11 @@ class Conta:
             self.extrato.transacoes.append(["TRANSFERENCIA", valor, "Data", datetime.datetime.today()])
             return "Transferencia Realizada"
 
+
+    @decoration
     def ver_saldo(self):
         """
         Exibe o saldo relacionado à conta
         """
-        print(f"\nConta Número: {self.numero} -----------------------------------------------"
-              f"\nSaldo: R$ {self.__saldo:.2f}")
+        print(f"Conta Número: {self.numero}\nSaldo: R$ {self.__saldo:.2f}")
+
