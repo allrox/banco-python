@@ -45,3 +45,6 @@ print(f"O resultado da soma é: {teste.somar()}")
 print(f"O resultado da multiplicação é: {teste.multiplicar()}")
 print(f"O resultado da subtração é: {teste.subtrair()}")
 print(f"O resultado da divisão é: {teste.dividir()}")
+
+# O método issubclass compara as classes retornando True caso o primeiro parâmetro seja uma subclasse do segundo parâmetro
+print("\nRetorno do método issubclasse na relação ClasseFilha >> ClasseSomaMultiplicacao: ", issubclass(ClasseFilha, ClasseSomaMultiplicacao))
