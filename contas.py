@@ -19,7 +19,7 @@ class Conta:
         """
         self.clientes = clientes
         self.numero = numero
-        self.__saldo = saldo
+        self.saldo = saldo
         self.data_abertura = datetime.datetime.today()
         self.extrato = Extrato()
         Conta.lista_contas.append(self)
@@ -49,6 +49,7 @@ class Conta:
             return resultado
         return wrapper
 
+
     @staticmethod
     def contador_instancias():
         print(f"\n\033[31mO objeto Conta possui {Conta.contador_contas} instâncias.\033[m")
@@ -62,7 +63,7 @@ class Conta:
         :rtype: str
         """
         try:
-            self.__saldo += valor
+            self.saldo += valor
             # Utiliza '.append' para incluir a operação na array TRANSACOES
             self.extrato.transacoes.append(["DEPOSITO", valor, "Data", datetime.datetime.today()])
             return f"Depósito de {valor} realizado."
@@ -78,10 +79,11 @@ class Conta:
         :rtype: Union[str, bool]
         """
         try:
-            if self.__saldo < valor:
+            if self.saldo < valor:
+                print("Saque não realizado. Sem saldo suficiente.")
                 return False
             else:
-                self.__saldo -= valor
+                self.saldo -= valor
                 # Utiliza '.append' para incluir a operação na array TRANSACOES
                 self.extrato.transacoes.append(["SAQUE", valor, "Data", datetime.datetime.today()])
                 return f"Saque de {valor} realizado."
@@ -99,11 +101,11 @@ class Conta:
         :rtype: str
         """
         try:
-            if self.__saldo < valor:
+            if self.saldo < valor:
                 return "Não existe saldo suficiente"
             else:
                 conta_destino.depositar(valor)
-                self.__saldo -= valor
+                self.saldo -= valor
                 # Utiliza '.append' para incluir a operação na array TRANSACOES
                 self.extrato.transacoes.append(["TRANSFERENCIA", valor, "Data", datetime.datetime.today()])
                 return "Transferencia Realizada"
@@ -115,4 +117,4 @@ class Conta:
         """
         Exibe o saldo relacionado à conta
         """
-        print(f"Conta Número: {self.numero}\nSaldo: R$ {self.__saldo:.2f}")
+        print(f"Conta Número: {self.numero}\nSaldo: R$ {self.saldo:.2f}")
