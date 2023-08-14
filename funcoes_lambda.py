@@ -13,8 +13,8 @@ def imc(altura, peso):
 
 
 def media(n1, n2, n3, n4):
-    resultado_media = lambda x, y, z, w: (x + y + z + w) / 4
-    return print(f"A média dos números {n1}, {n2}, {n3}, {n4} é {round(resultado_media(n1, n2, n3, n4), 2)}")
+    media = lambda x, y, z, w: (x + y + z + w) / 4
+    return print(f"A média dos números {n1}, {n2}, {n3}, {n4} é {round(media(n1, n2, n3, n4))}")
 
 
 imc(1.7, 67)
